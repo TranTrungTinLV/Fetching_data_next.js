@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import useSWR from 'swr'
 function LastesSales() {
     const [sales, setSales] = useState();
-    // const [isLoading, setLoading] = useState(false);
     const fetcher = (...args) => fetch(...args).then((res) => res.json())
     const { data, error } = useSWR('https://nextjs-course-27435-default-rtdb.firebaseio.com/sales.json', fetcher);
     useEffect(() => {
@@ -19,24 +18,6 @@ function LastesSales() {
         }
     }, [data]);
 
-    // useEffect(() => {
-    //     setLoading(true);
-    //     fetch(
-    //         'https://nextjs-course-27435-default-rtdb.firebaseio.com/sales.json'
-    //     ).then((respone) => respone.json())
-    //         .then(data => {
-    //             const transformedSales = [];
-    //             for (const key in data) {
-    //                 transformedSales.push({
-    //                     id: key,
-    //                     username: data[key].usewmicrname,
-    //                     volume: data[key].volume
-    //                 });
-    //             }
-    //             setSales(transformedSales);
-    //             setLoading(false);
-    //         });
-    // }, []);
     if (error) {
         return <p>Data is not yes</p>
     }
